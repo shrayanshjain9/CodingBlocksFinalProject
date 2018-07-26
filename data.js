@@ -217,15 +217,47 @@ var data = {
 		}),
 		// color: '#2c3e50'
         shape: function () {
+                // var randomPoint = Point.random();
+                // var point = maxPoints * randomPoint;
+                var center = view.center;
+                var points = 12;
+                var radius1 = 200;
+                var radius2 = 300;
+                var path = new Path.Star(center, points, radius1, radius2);
+                var stops = [
+                    [getRandomColor(), 0.9],
+                    [getRandomColor(), 0.15],
+                    [getRandomColor(), 0.38],
+                    [getRandomColor(), 0.7]
+                ];
+                var gradient = new Gradient(stops, true);
+                var from = path.position;
+                var to = path.position + [250, 0];
+                var gradientColor = new Color(gradient, from, to);
+                path.fillColor = gradientColor;
+                path.name="gradient";
+                decagon.push(path);
+                remove(path,1000);
+
+
+
+            // path.fillColor = getRandomColor();
+
+            // var path = new Path.Circle({
+            //     center: view.center,
+            //     radius: 150
+            // });
+
             // var randomPoint = Point.random();
             // var point = maxPoints * randomPoint;
-            var from = new Point(20, 20);
-            var to = new Point(80, 80);
-                var line = new Path.Line(from,to);
-                line.strokeColor= getRandomColor();
-                line.strokeWidth=4;
-                line.name="lines";
-                decagon.push(line);
+            // var from = new Point(20, 20);
+            // var to = new Point(80, 80);
+            //     var line = new Path.Line(from,to);
+            //     line.strokeColor= getRandomColor();
+            //     line.fillColor= getRandomColor();
+            //     line.strokeWidth=4;
+            //     line.name="lines";
+            //     decagon.push(line);
             // return line;
             // remove(line,2000);
         }
@@ -236,12 +268,31 @@ var data = {
 		}),
 		// color: '#f1c40f'
         shape: function () {
-            var from = new Point(20, 20);
-            var through = new Point(60, 20);
-            var to = new Point(80, 80);
-            var path = new Path.Arc(from, through, to);
-            path.name='arc';
-            decagon.push(path);
+            for (var i=1;i<=10;i++){
+
+                var rectangle = new Rectangle(new Point(view.center + (40-(i*10))), new Point(view.center) - (40-(i*10)));
+                var cornerSize = new Size(10, 10);
+                var path = new Path.Rectangle(rectangle, cornerSize);
+                path.strokeColor = getRandomColor();
+                path.strokeWidth =2;
+                path.name='roundrec';
+                decagon.push(path);
+                remove(path,800);
+            }
+
+            // for (var i=0;i<=10;i++){
+            //     var randomPoint = Point.random();
+            //     var point = maxPoints * randomPoint;
+            //     var from = point;
+            //     var through = view.center+(((i+1)*3)) * Math.random();
+            //     var to = point;
+            //     var path = new Path.Arc(from, through, to);
+            //     path.strokeColor=getRandomColor();
+            //     // path.fillColor=getRandomColor();
+            //     path.name='arc';
+            //     decagon.push(path);
+            // }
+
         }
 	},
 	s: {
@@ -351,7 +402,7 @@ var data = {
                 clonedPath.rotate(angle * i, circlePath.bounds.topLeft);
                 clonedPath.opacity = 0.1*(i/9);
                 // clonedPath.skew(2);
-                remove(clonedPath,1000);
+                remove(clonedPath,300);
                 remove(circlePath,300);
             }
             clonedPath.scale(1.1);
@@ -399,7 +450,7 @@ var data = {
         shape: function(){
             var deca = new Path.RegularPolygon(new Point(view.center+20, view.center), 15, 200);
             deca.fillColor = getRandomColor();
-            deca.selected = true;
+            // deca.selected = true;
             deca.name="changing";
             decagon.push(deca);
         }
@@ -418,7 +469,7 @@ var data = {
             myPath.name = 'zigzag';
             max=20;
             myPath.strokeWidth=20;
-            myPath.selected=true;
+            // myPath.selected=true;
             decagon.push(myPath);
 
 
@@ -428,19 +479,65 @@ var data = {
 		sound: new Howl({
   		src: ['A/timer.mp3']
 		}),
-		color: '#34495e'
+		// color: '#34495e'
+        shape :function () {
+
+            for (var i=1;i<=30;i++){
+                var randomPoint = Point.random();
+                var point = maxPoints * randomPoint;
+                var path = new Path.Circle(point,25);
+                path.strokeColor = getRandomColor();
+                // path.opacity=0.8;
+                path.name="circlething";
+                decagon.push(path);
+                remove(path,1000);
+            }
+
+        }
 	},
 	c: {
 		sound: new Howl({
   		src: ['A/ufo.mp3']
 		}),
-		color: '#16a085'
+		// color: '#16a085'
+        shape : function () {
+            for(var i=1;i<=30;i++){
+                var randomPoint = Point.random();
+                var point = maxPoints * randomPoint;
+                // var center = new Point(50, 50);
+                var sides = 3;
+                var radius = 200;
+                var triangle = new Path.RegularPolygon(point, sides, radius);
+                // triangle.fillColor = getRandomColor();
+                triangle.strokeColor= getRandomColor();
+                triangle.strokeWidth= 5;
+                // triangle.opacity=0.3;
+                triangle.name="triangle1";
+                decagon.push(triangle);
+
+            }
+        }
 	},
 	v: {
 		sound: new Howl({
   		src: ['A/veil.mp3']
 		}),
-		color: '#27ae60'
+		// color: '#27ae60'
+        shape: function () {
+
+		    for (var i=0;i<=7;i++){
+                var center = new Point(20,(i*100));
+                var points = 20;
+                var radius1 = 20;
+                var radius2 = 120;
+                var path = new Path.Star(center, points, radius1, radius2);
+                path.fillColor = getRandomColor();
+                path.name="star1";
+                decagon.push(path);
+                remove(path,1000);
+            }
+
+        }
 	},
 	b: {
 		sound: new Howl({
@@ -537,7 +634,7 @@ function onFrame(event) {
         else if (decagon[i].name === 'circle') {
             decagon[i].fillColor.hue += 5;
             decagon[i].scale(0.9);
-            decagon[i].rotate(100);
+            decagon[i].rotate(150);
             if(decagon[i].area<1){
                 remov(i,decagon[i]);
             }
@@ -562,13 +659,17 @@ function onFrame(event) {
             if(decagon[i].area<1){
                 remov(i,decagon[i]);
             }
-        } else if (decagon[i].name === 'lines') {
-            decagon[i].scale(1.11);
+        } else if (decagon[i].name === 'gradient') {
+            decagon[i].scale(0.899);
+            // decagon[i].skew(3);
+            // decagon[i].translate(15);
+            decagon[i].rotate(20);
             if(decagon[i].area<1){
                 remov(i,decagon[i]);
             }
-        }else if (decagon[i].name === 'arc') {
-            decagon[i].scale(1.11);
+        }else if (decagon[i].name === 'roundrec') {
+            // decagon[i].rotate(11);
+            decagon[i].scale(1.31);
             if(decagon[i].area<1){
                 remov(i,decagon[i]);
             }
@@ -662,6 +763,31 @@ function onFrame(event) {
                 decagon[i].smooth();
             }
 
+        } else if (decagon[i].name==='circlething'){
+            decagon[i].skew(2);
+            decagon[i].rotate(2);
+            decagon[i].scale(1.11);
+            decagon[i].smooth();
+            if(decagon[i].area<1){
+                remov(i,decagon[i]);
+            }
+        } else if (decagon[i].name==="triangle1"){
+            decagon[i].scale(0.89);
+            decagon[i].rotate(8);
+            if(decagon[i].area<1){
+                remov(i,decagon[i]);
+            }
+        } else if (decagon[i].name==="star1"){
+
+            decagon[i].position.x += 50;
+            decagon[i].rotate(6);
+            decagon[i].scale(0.9822);
+            decagon[i].skew(7);
+            decagon[i].fillColor.hue += 10;
+            if(decagon[i].area<1){
+                remov(i,decagon[i]);
+            }
+
         }
     }
 
@@ -681,7 +807,7 @@ function segmentRemover(dec) {
     dec.fillColor.hue+=10;
 }
 
-function remove(path,time,i){
+function remove(path,time){
     setTimeout(function(){path.remove();},time);
 }
 function remove1(path,time,i){
