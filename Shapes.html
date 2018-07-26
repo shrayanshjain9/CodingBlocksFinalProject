@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shapes</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.13/howler.js"></script>
+    <script type="text/javascript" src="paper-full.js"></script>
+    <link rel="stylesheet" type="text/css" href="shapes.css">
+    <script type="text/paperscript" canvas = "myCanvas" src="data.js"></script>
+
+
+    <!--<script type="text/paperscript" canvas = "myCanvas" src="data2.js"></script>-->
+
+
+    <!--<script type = 'text/paperscript' canvas = "myCanvas">-->
+        <!--var decagon = new Path.RegularPolygon(new Point(view.center+20, view.center-70), 6, 100);-->
+        <!--decagon.fillColor = '#e9e9ff';-->
+        <!--decagon.selected = true;-->
+        <!--decagon.removeSegment(0);-->
+        <!--decagon.removeSegment(1);-->
+        <!--decagon.removeSegment(2);-->
+        <!--decagon.removeSegment(3);-->
+        <!--decagon.removeSegment(4);-->
+        <!--decagon.addSegment();-->
+
+    <!--</script>-->
+    <!--<script type = 'text/paperscript' canvas = "myCanvas">-->
+
+    <!--var path = new Path.Rectangle(new Point(300,400),new Point(500,600));-->
+    <!--path.strokeColor='lightgreen';-->
+    <!--path.strokeWidth=10;-->
+    <!--path.fullySelected = true;-->
+    <!--function remove(path){-->
+    <!--setTimeout(function(){path.remove();},1000);-->
+    <!--}-->
+    <!--function onFrame(event){-->
+    <!--path.skew(2,4);-->
+    <!--&lt;!&ndash;setTimeout(function(){path.scale(1.1);&ndash;&gt;-->
+    <!--&lt;!&ndash;},1000);&ndash;&gt;-->
+
+    <!--remove(path);-->
+    <!--}-->
+
+    <!--&lt;!&ndash;var from = new Point(200,400);&ndash;&gt;-->
+    <!--&lt;!&ndash;var through = new Point(600, 200);&ndash;&gt;-->
+    <!--&lt;!&ndash;var to = new Point(800, 800);&ndash;&gt;-->
+    <!--&lt;!&ndash;var path = new Path.Arc(from, through, to);&ndash;&gt;-->
+    <!--&lt;!&ndash;path.strokeColor = 'lightgreen';&ndash;&gt;-->
+    <!--&lt;!&ndash;path.fullySelected = true;&ndash;&gt;-->
+    <!--&lt;!&ndash;path.strokeWidth=10;&ndash;&gt;-->
+    <!--&lt;!&ndash;function onFrame(event){&ndash;&gt;-->
+    <!--&lt;!&ndash;path.skew(2,4);&ndash;&gt;-->
+    <!--&lt;!&ndash;path.&ndash;&gt;-->
+    <!--</script>-->
+
+    <!--<script type = 'text/paperscript' canvas = "myCanvas">-->
+        <!--var maxPoints = new Point(view.size.width, view.size.height);-->
+        <!--function getRandomColor() {-->
+    <!--var letters = '0123456789ABCDEF';-->
+    <!--var color = '#';-->
+    <!--for (var i = 0; i < 6; i++) {-->
+        <!--color += letters[Math.floor(Math.random() * 16)];-->
+    <!--}-->
+    <!--return color;-->
+<!--}-->
+        <!--var randomPoint = Point.random();-->
+        <!--var point = maxPoints * randomPoint;-->
+        <!--var from = new Point(2000, 2000);-->
+        <!--var to = new Point(8000, 8000);-->
+
+            <!--for (var i=0;i<=20;i++){-->
+                <!--var line = new Path.Line(point+i, point);-->
+                <!--line.strokeColor= getRandomColor();-->
+                <!--line.strokeWidth=10;-->
+            <!--}-->
+            <!--function onFrame(event) {-->
+                <!--line.scale(1.02);-->
+
+           <!--}-->
+
+    <!--</script>-->
+
+
+</head>
+<body>
+<canvas id="myCanvas" resize=""></canvas>
+</body>
+</html>
